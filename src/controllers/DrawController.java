@@ -10,6 +10,7 @@ import javafx.scene.Camera;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.PointLight;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
@@ -22,30 +23,16 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-import static java.lang.Math.random;
 
 public class DrawController {
     public FlowPane flowPaneDraw;
 
     public Button btnExit;
 
-    PhongMaterial redMaterial;
-    PhongMaterial blueMaterial;
-    PhongMaterial greyMaterial;
+    PhongMaterial phongMaterial;
 
     @FXML
     public void initialize() {
-        redMaterial = new PhongMaterial();
-        redMaterial.setDiffuseColor(Color.RED);
-        redMaterial.setSpecularColor(Color.ORANGE);
-
-        blueMaterial = new PhongMaterial();
-        blueMaterial.setDiffuseColor(Color.BLUE);
-        blueMaterial.setSpecularColor(Color.LIGHTBLUE);
-
-        greyMaterial = new PhongMaterial();
-        greyMaterial.setDiffuseColor(Color.DARKGREY);
-        greyMaterial.setSpecularColor(Color.GREY);
     }
 
     public void exitAction(ActionEvent actionEvent) {
@@ -62,9 +49,11 @@ public class DrawController {
     }
 
     public void drawSphereAction(ActionEvent actionEvent) {
-        final Sphere blue = new Sphere(50);
-        blue.setMaterial(blueMaterial);
-        action(blue);
+        final Sphere sphere = new Sphere(100);
+        phongMaterial = new PhongMaterial();
+        phongMaterial.setDiffuseMap(new Image("/resources/assets/map.png"));
+        sphere.setMaterial(phongMaterial);
+        action(sphere);
 
     }
 
@@ -86,30 +75,14 @@ public class DrawController {
                 new KeyValue(sphere.translateXProperty(), 0));
         timeline.getKeyFrames().add(movePlane);
         timeline.play();
-
-
-        flowPaneDraw.getChildren().add(sphere);
-
-        timeline = new Timeline();
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        movePlane = new KeyFrame(Duration.millis(5000),
-                new KeyValue(sphere.translateXProperty(), 900));
-        timeline.getKeyFrames().add(movePlane);
-        timeline.play();
-
-
     }
 
     public void drawBoxAction(ActionEvent actionEvent) {
-        final Box red = new Box(400, 400, 400);
-        red.setMaterial(redMaterial);
-        flowPaneDraw.getChildren().add(red);
+
     }
 
     public void drawCylinderAction(ActionEvent actionEvent) {
-        final Cylinder grey = new Cylinder(5, 100);
-        grey.setMaterial(greyMaterial);
-        flowPaneDraw.getChildren().add(grey);
+
 
     }
 
