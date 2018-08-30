@@ -1,0 +1,15 @@
+#flowPaneDraw {
+    -fx-background-color: white;
+}
+
+#btnDraw {
+    -fx-margin: 20;
+    -fx-background-color: green;
+    -fx-text-fill: white;
+}
+
+#btnExit {
+    -fx-margin: 20;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
