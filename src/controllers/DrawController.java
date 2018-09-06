@@ -51,6 +51,7 @@ public class DrawController {
     public void drawSphereAction(ActionEvent actionEvent) {
         final Sphere sphere = new Sphere(100);
         phongMaterial = new PhongMaterial();
+        phongMaterial.setBumpMap(new Image("/resources/assets/map.png"));
         phongMaterial.setDiffuseMap(new Image("/resources/assets/map.png"));
         sphere.setMaterial(phongMaterial);
         action(sphere);
@@ -59,10 +60,10 @@ public class DrawController {
 
     public void action(Sphere sphere) {
         Random rand = new Random();
-        sphere.setTranslateX(rand.nextInt(100) + 1);
-        sphere.setTranslateY(rand.nextInt(100) + 1);
-        sphere.setTranslateZ((rand.nextInt(100) + 1) * 10);
-        sphere.setRotate(rand.nextInt(100) + 1);
+        sphere.setTranslateX(rand.nextInt(50) + 1);
+        sphere.setTranslateY(rand.nextInt(50) + 1);
+        sphere.setTranslateZ((rand.nextInt(50) + 1) * 10);
+        sphere.setRotate(rand.nextInt(50) + 1);
 
 
 
@@ -78,12 +79,21 @@ public class DrawController {
     }
 
     public void drawBoxAction(ActionEvent actionEvent) {
-
+        final Sphere sphere = new Sphere(100);
+        phongMaterial = new PhongMaterial();
+        phongMaterial.setBumpMap(new Image("/resources/assets/map.png"));
+        //phongMaterial.setDiffuseMap(new Image("/resources/assets/map.png"));
+        sphere.setMaterial(phongMaterial);
+        action(sphere);
     }
 
     public void drawCylinderAction(ActionEvent actionEvent) {
-
-
+        final Sphere sphere = new Sphere(100);
+        phongMaterial = new PhongMaterial();
+        //phongMaterial.setBumpMap(new Image("/resources/assets/map.png"));
+        phongMaterial.setDiffuseMap(new Image("/resources/assets/map.png"));
+        sphere.setMaterial(phongMaterial);
+        action(sphere);
     }
 
     public void drawLightAction(ActionEvent actionEvent) {
